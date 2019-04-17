@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/17/The-First/">The First</a>
+      <a class="article-title" href="/2019/04/17/The-First/">C++</a>
     </h1>
   
 
@@ -172,7 +172,99 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="The-First"><a href="#The-First" class="headerlink" title="The First"></a>The First</h2><h2 id="The-Second"><a href="#The-Second" class="headerlink" title="The Second"></a>The Second</h2><h2 id="The-Third"><a href="#The-Third" class="headerlink" title="The Third"></a>The Third</h2><hr>
+        <h2 id="一-命名空间"><a href="#一-命名空间" class="headerlink" title="一.命名空间"></a>一.命名空间</h2><blockquote>
+<p>在c++中，变量，函数和类都是大量存在的，这些变量，函数和类的名称都将存在与全局作用域中，可能会导致很多的冲突。所以命名空间存在的意义就是<strong>对标示符的名称进行本地化，以避免命名冲突或者名字污染。</strong></p>
+</blockquote>
+<ul>
+<li>命名空间中可以定义变量和函数</li>
+<li>命名空间可以嵌套</li>
+<li>同一个工程允许出现多个相同的命名空间，编译器最后会整合到一个命名空间中</li>
+</ul>
+<h3 id="1-命名空间的使用"><a href="#1-命名空间的使用" class="headerlink" title="1.命名空间的使用"></a>1.命名空间的使用</h3><ul>
+<li>命名空间名称 + 作用域限定符</li>
+<li>使用using + 命名空间名称 + 作用域限定符</li>
+<li>使用 using namespace + 命名空间名称</li>
+</ul>
+<h3 id="⚠️："><a href="#⚠️：" class="headerlink" title="⚠️："></a>⚠️：</h3><ul>
+<li>一个命名空间就定义了一个新的作用域，命名空间内的所有内容都局限于该命名空间中</li>
+</ul>
+<h2 id="二-缺省参数"><a href="#二-缺省参数" class="headerlink" title="二.缺省参数"></a>二.缺省参数</h2><h3 id="1-缺省参数的概念"><a href="#1-缺省参数的概念" class="headerlink" title="1. 缺省参数的概念"></a>1. 缺省参数的概念</h3><blockquote>
+<p>缺省参数是声明或定义函数时为函数的参数指定一个默认值。在调用该函数时，如果没有指定实参则采用该默认值，否则使用指定的实参。</p>
+</blockquote>
+<h3 id="2-缺省参数分类"><a href="#2-缺省参数分类" class="headerlink" title="2. 缺省参数分类"></a>2. 缺省参数分类</h3><ul>
+<li>全缺省参数</li>
+<li>半缺省参数</li>
+</ul>
+<h3 id="⚠️：-1"><a href="#⚠️：-1" class="headerlink" title="⚠️："></a>⚠️：</h3><ul>
+<li>半缺省参数必须要从右向左依次给出，不能间隔着给</li>
+<li>缺省参数不能在定义和声明中同时出现</li>
+<li>缺省参数必须是常量或者全局变量</li>
+<li>c语言不支持（编译器不支持）</li>
+</ul>
+<h2 id="三-重载函数"><a href="#三-重载函数" class="headerlink" title="三.重载函数"></a>三.重载函数</h2><h3 id="1-重载函数的概念："><a href="#1-重载函数的概念：" class="headerlink" title="1.重载函数的概念："></a>1.重载函数的概念：</h3><blockquote>
+<p>函数重载是函数的一种特殊情况。c++允许在同一作用域下存在几个功能类似的同名函数，但是这些同名函数的形参列表（参数的个数，类型，顺序）必须不同。</p>
+</blockquote>
+<blockquote>
+<p>函数重载用来处理那些功能相似但是数据类型不同的问题。</p>
+</blockquote>
+<h3 id="2-函数可以重载的原因："><a href="#2-函数可以重载的原因：" class="headerlink" title="2.函数可以重载的原因："></a>2.函数可以重载的原因：</h3><blockquote>
+<p><strong>C++中的名字修饰</strong></p>
+</blockquote>
+<blockquote>
+<p>C++根据同名函数的参数的个数，类型或者顺序不同在每个同名函数在编译过后，将这些同名函数在底层修饰成不同的函数名字，这样就不会有函数的命名冲突，解决了重载函数的问题。</p>
+</blockquote>
+<blockquote>
+<p>因为C中的名字修饰及其简单（只是在函数名前面加了一个下划线_），所以C不支持函数重载。</p>
+</blockquote>
+<h3 id="⚠️：-2"><a href="#⚠️：-2" class="headerlink" title="⚠️："></a>⚠️：</h3><ul>
+<li><p>其实在底层 C++ 还是要遵循函数命名唯一的原则，重载函数的出现是因为 C++ 在编译过程中的名字修饰。</p>
+</li>
+<li><p>单独根据返回值类型不同不能造成函数重载。</p>
+</li>
+</ul>
+<h3 id="3-名字修饰（Name-Mangling）"><a href="#3-名字修饰（Name-Mangling）" class="headerlink" title="3.名字修饰（Name Mangling）"></a>3.名字修饰（Name Mangling）</h3><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><ul>
+<li>Name Mangling是一种在编译过程中，将函数、变量的名称重新改编的机制，简单来说就是编译器为了区分各个函数，将函数通过某种算法，重新修饰为一个全局唯一的名称。</li>
+</ul>
+<h4 id="名字修饰规则"><a href="#名字修饰规则" class="headerlink" title="名字修饰规则"></a>名字修饰规则</h4><ul>
+<li>C++底层的名字修饰规则是根据函数的 作用域 + 返回值类型 + 函数名 + 参数列表 共同决定的（Linux下）</li>
+</ul>
+<p>⚠️：</p>
+<ul>
+<li>由于这是一篇总结性的文章，又因为如果想要彻底的展现C++底层的命名规则的话，需要的测试实例略多，所以关于函数重载和名字修饰规则会另有一篇专门的文章，这里只是简单的总结一下</li>
+</ul>
+<p><a href="http://www.cnblogs.com/skynet/archive/2010/09/05/1818636.html" target="_blank" rel="noopener">C++的函数重载和命名修饰</a></p>
+<h3 id="四-extern-“C”"><a href="#四-extern-“C”" class="headerlink" title="四. extern “C”"></a>四. extern “C”</h3><h4 id="概念：-1"><a href="#概念：-1" class="headerlink" title="概念："></a>概念：</h4><ul>
+<li>在C++工程中如果我们休要某需要数按照C的风格来编译，在函数前加extern “C”,意思是告诉编译器，将该函数按照C的风格来编译</li>
+</ul>
+<h3 id="五-引用"><a href="#五-引用" class="headerlink" title="五.引用"></a>五.引用</h3><h4 id="1-引用概念"><a href="#1-引用概念" class="headerlink" title="1.引用概念"></a>1.引用概念</h4><p>引用不是定义了一个全新的变量，它相当于给变量取了一个别名。</p>
+<p>从语法上讲，编译器不会为引用变量开辟一个新的空间，它和它引用的变量公用同一块内存空间</p>
+<p>但是实际上引用的底层使用指针来实现的，底层还是开辟了新的空间</p>
+<h4 id="2-引用特性"><a href="#2-引用特性" class="headerlink" title="2.引用特性"></a>2.引用特性</h4><ul>
+<li>引用在定义时必须初始化</li>
+<li>引用类型必须和引用实体时同一个类型</li>
+<li>一个变量可以有多个引用</li>
+<li>引用一旦引用一个实体，便不能引用其他实体</li>
+<li>做函数的参数或者返回值，效率比传值高</li>
+</ul>
+<p>⚠️：指针和引用的不同点：</p>
+<ul>
+<li>引用在定义时必须初始化，指针没有要求</li>
+<li>引用在初始化引用一个实体后，便不能引用其他实体，而指针可以在任何时候指向一个同类型的实体</li>
+<li>没有NULL引用，但是有NULL指针</li>
+<li>在sizeof中含义不同:引用的结果时引用类型的大小，但指针始终是地址空间所占字节数</li>
+<li>引用自加即引用的实体加1，而指针自加是指针向后偏移一个类型的大小</li>
+<li>有多级指针，但是没有多级引用</li>
+<li>访问实体方式不同，指针需要显示解引用，而引用是编译器自己处理</li>
+<li>引用比指针使用起来相对安全</li>
+</ul>
+<h3 id="六-内联函数"><a href="#六-内联函数" class="headerlink" title="六.内联函数"></a>六.内联函数</h3><h4 id="6-1-概念"><a href="#6-1-概念" class="headerlink" title="6.1 概念"></a>6.1 概念</h4><p>以inline修饰的函数为内联函数，编译时C++编译器会在调用内联函数的地方展开，没有函数压栈的开销，内联函数有时会提升程序的运行效率</p>
+<h4 id="6-2-特性"><a href="#6-2-特性" class="headerlink" title="6.2 特性"></a>6.2 特性</h4><ul>
+<li>inline是一种以空间换时间的做法，省去了调用函数时的开销。所以代码很长或者有循环/递归的函数不宜使用内联函数</li>
+<li>inline对于编译器来说只是一种建议，编译器会自动优化。如果内联函数体内有循环/递归的话，编译器优化的时候会忽略掉内联</li>
+<li>inline不建议定义和声明分离，分离会导致链接错误。因为inline被展开了，就没有了函数地址，链接就会找不到</li>
+<li>和宏函数相比:有语法检查，比宏函数安全。可以考虑用内联函数替换宏函数</li>
+</ul>
+<hr>
 
       
 
